@@ -62,5 +62,31 @@ describe Admin::CategoriesController do
 
     assert_raise(ActiveRecord::RecordNotFound) { Category.find(test_id) }
   end
+
+  #added
+  describe "GET 'new'" do
+    it "assigns a new category" do
+      get :new
+      expect(assigns(:category)).to be_a_new(Category)
+    end
+
+    it "assigns all categories" do
+      get :new
+      expect(assigns(:categories)).to eq(Category.all)
+    end
+  end
+  #added
+  describe "GET 'edit'" do
+    let(:category) { Factory(:category) }
+
+    it "assigns a category" do
+      get :edit, id: category.id
+      expect(assigns(:category)).to eq(category)
+    end
+    it "assigns all categories" do
+      get :edit, id: category.id
+      expect(assigns(:categories)).to eq(Category.all)
+    end
+  end
   
 end
