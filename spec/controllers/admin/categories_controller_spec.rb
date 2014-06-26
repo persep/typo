@@ -102,4 +102,12 @@ describe Admin::CategoriesController do
     assert_raise(ActiveRecord::RecordNotFound) { Category.find(test_id) }
   end
   
+  describe 'test posting new category' do
+   it 'should redirect to index after creating new category' do
+     test_category = Factory.build(:category)
+     post :edit, :category => test_category.attributes
+     assert_response :redirect, :action => 'index'
+   end
+
+end
 end
