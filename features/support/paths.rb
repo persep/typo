@@ -21,6 +21,9 @@ module NavigationHelpers
     when /^the Categories page$/
       '/admin/categories/new'
 
+    when /^the Edit Page of Article with id (\d+)$/
+      "/admin/content/edit/#{$1}"
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
