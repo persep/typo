@@ -54,6 +54,7 @@ Feature: Merge Articles
         And I am on the home page
         Then I should see "Article1"
         When I follow "Article1"
+        #And show me the page
         Then I should see "Comment1"
         And I should see "Comment2"
 

@@ -418,18 +418,20 @@ class Article < Content
 
   def merge_with(other_article_id)
     tomerge = Article.find_by_id(other_article_id)
-    if not self.id or not tomerge.id
-      return false
-    end
+    #if not self.id or not tomerge.id
+    #  return false
+    #end
+
+    return false if tomerge.nil?
 
     self.body = self.body + "\n\n" + tomerge.body
     self.comments << tomerge.comments
     self.save!
 
-    tomerge = Article.find_by_id(other_article_id)
+    tomerge = Article.find_by_id(other_article_id) #Warning: ActiveRecord caches associations
     tomerge.destroy
 
-    return true
+    return self
   end
 
   protected
