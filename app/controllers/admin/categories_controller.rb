@@ -31,6 +31,7 @@ class Admin::CategoriesController < Admin::BaseController
     else
       @category = Category.find(params[:id])
     end
+    #@category = Category.find(params[:id])
     @category.attributes = params[:category]
     if request.post?
       respond_to do |format|
